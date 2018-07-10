@@ -2,6 +2,8 @@
 
 This package is a wrapper to [FlutterFire](https://pub.dartlang.org/packages/firebase_auth) package so that it can be used with the [Authentication Starter](https://github.com/aqwert/flutter_auth_starter/) project
 
+`https://pub.dartlang.org/packages/flutter_auth_firebase`
+
 
 # Setup
 
@@ -11,12 +13,12 @@ At a minumum the dependencies required are:
 
 * [flutter_auth_base](https://pub.dartlang.org/packages/flutter_auth_base) : The interfaces that allow the abstraction
 * [firebase_auth](https://pub.dartlang.org/packages/firebase_auth) : The Firebase for ios and android package
-* [google_sign_in](https://pub.dartlang.org/packages/google_sign_in) : To support signin in to google
-
 
 # Implement
 
 Example code of using the package
+
+ > The Google provider is from https://github.com/aqwert/flutter_auth_firebase_google
 
 Imports:
 ```dart
@@ -57,6 +59,7 @@ Additionally the `authService.preAuthPhotoProvider` and/or `authService.postAuth
 
 # TODO
 
+ - [x] [Google provider](https://github.com/aqwert/flutter_auth_firebase_google)
  - [ ] Twitter provider
  - [ ] Facebook provider
  - [ ] Anonymous Signin
