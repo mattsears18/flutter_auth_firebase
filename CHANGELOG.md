@@ -1,3 +1,7 @@
+# [0.2.1] - 20 July 2018
+
+* Force refesh of firebase token
+
 # [0.2.0] - 10 July 2018
 
 * Removed Google signin as a dependency. This is now a separate project

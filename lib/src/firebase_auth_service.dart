@@ -63,13 +63,13 @@ class FirebaseAuthService implements AuthService {
   }
 
   @override
-  Future<String> currentUserToken() async {
+  Future<String> currentUserToken({bool refresh = false}) async {
     var user = await auth.currentUser();
 
     if (user == null) {
       return null;
     }
-    return await user.getIdToken();
+    return await user.getIdToken(refresh: refresh);
   }
 
   @override
