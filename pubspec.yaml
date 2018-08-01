@@ -1,6 +1,6 @@
 name: flutter_auth_firebase
 description: A FlutterFire wrapper and abstraction
-version: 0.2.1
+version: 0.2.2
 author: Lance Johnstone <flutterlance@outlook.com>
 homepage: https://github.com/aqwert/flutter_auth_firebase
 

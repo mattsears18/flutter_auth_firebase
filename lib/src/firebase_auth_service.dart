@@ -14,7 +14,7 @@ import 'firebase_user.dart';
 ///
 class FirebaseAuthService implements AuthService {
   FirebaseAuthService() : auth = fb.FirebaseAuth.instance {
-    auth.onAuthStateChanged.firstWhere((user) {
+    auth.onAuthStateChanged.listen((user) {
       _authChangeNotifier.value = new FirebaseUser(user);
       return true;
     });
