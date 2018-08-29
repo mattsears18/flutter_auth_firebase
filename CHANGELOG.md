@@ -1,3 +1,7 @@
+# [0.3.0] - 29 August 2018
+
+* Dart 2.1 Compatible
+* 
 # [0.2.2] - 02 August 2018
 
 * Changed the listener to onAuthStateChanged.

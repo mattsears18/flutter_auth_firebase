@@ -1,18 +1,18 @@
 name: flutter_auth_firebase
 description: A FlutterFire wrapper and abstraction
-version: 0.2.2
+version: 0.3.0
 author: Lance Johnstone <flutterlance@outlook.com>
 homepage: https://github.com/aqwert/flutter_auth_firebase
 
 environment:
-  sdk: ">=1.23.0 <2.0.0"
+  sdk: ">=1.23.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
   firebase_auth: "^0.5.10"
-  flutter_auth_base: "^0.2.0"
+  flutter_auth_base: "^0.3.1"
 
 dev_dependencies:
   flutter_test:
