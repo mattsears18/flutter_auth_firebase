@@ -5,6 +5,7 @@
  */
 
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart' as fb;
 import 'package:flutter/foundation.dart';
 import 'package:flutter_auth_base/flutter_auth_base.dart';
 
@@ -37,8 +38,12 @@ class FirebaseEmailProvider extends AuthProvider implements LinkableProvider {
     if (!termsAccepted) {
       throw new UserAcceptanceRequiredException(args);
     } else {
-      var user = await _service.auth.createUserWithEmailAndPassword(
-          email: args['email'], password: args['password']);
+      // TODO need error handling (need tests)
+      final fb.AuthResult result = await _service.auth
+          .createUserWithEmailAndPassword(
+              email: args['email'], password: args['password']);
+
+      var user = await _service.auth.currentUser();
 
       return _service.authUserChanged.value = FirebaseUser(user);
     }
@@ -47,8 +52,11 @@ class FirebaseEmailProvider extends AuthProvider implements LinkableProvider {
   @override
   Future<AuthUser> signIn(Map<String, String> args,
       {termsAccepted = false}) async {
-    var user = await _service.auth.signInWithEmailAndPassword(
+    //TODO need error handling (tests)
+    final fb.AuthResult result = await _service.auth.signInWithEmailAndPassword(
         email: args['email'], password: args['password']);
+
+    var user = await _service.auth.currentUser();
 
     // gives a chance that the owner can check if the end user needs to accept terms.
     // even if they already exist
@@ -98,10 +106,17 @@ class FirebaseEmailProvider extends AuthProvider implements LinkableProvider {
     //need to reauthenticate using the last known provider
 
     try {
-      var user = await _service.auth.linkWithEmailAndPassword(
-          email: args['email'], password: args['password']);
+      var user = await _service.auth.currentUser();
 
-      return _service.authUserChanged.value = new FirebaseUser(user);
+      //TODO need error handling (tests)
+      final fb.AuthCredential emailCredential =
+          fb.EmailAuthProvider.getCredential(
+              email: args['email'], password: args['password']);
+
+      final fb.AuthResult result =
+          await user.linkWithCredential(emailCredential);
+
+      return _service.authUserChanged.value = FirebaseUser(user);
     } on PlatformException catch (error) {
       if (error.details.toString().startsWith('This operation is sensitive')) {
         throw new AuthRequiredException();
