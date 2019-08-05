@@ -86,7 +86,9 @@ class FirebaseAuthService implements AuthService {
     var profile = new fb.UserUpdateInfo();
     profile.displayName = name;
 
-    await auth.updateProfile(profile);
+    var user = await auth.currentUser();
+    await user.updateProfile(profile);
+
     var newUser = await auth.currentUser();
     return authUserChanged.value = new FirebaseUser(newUser);
   }
