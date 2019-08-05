@@ -1,6 +1,6 @@
 # [0.4.0] - 04 August 2019
 
-- firebase_auth 0.14.0 compatible
+- Upgrade to firebase_auth 0.13.1+1
 
 # [0.3.0] - 29 August 2018
 
